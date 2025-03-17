@@ -61,7 +61,7 @@ class KBArray {
 public class GenericsKbArrayApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        KBArray kb = new KBArray(1000);
+        KBArray kb = new KBArray(20000);
 
         while (true) {
             System.out.println("Choose an action from the menu:");
