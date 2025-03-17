@@ -1,13 +1,21 @@
 /**
- * BST-based Knowledge Base implementation.
+ * BST implementation with additional functions for data processing
  */
 
- import java.io.*;
+import java.io.*;
 import java.util.*;
 
 class BST {
+    /**
+     * The root node of the binary tree.
+     */
     private Node root;
 
+    
+    /**
+     * Loads statements from the target file
+     * @param filename the name of the target file
+     */
     public void loadFromFile(String filename) {
         File dataset = new File("src/" + filename);
         try {
@@ -30,6 +38,12 @@ class BST {
         root = addOrUpdate(root, newStatement);
     }
 
+    /**
+     * Adds a new statement to the tree or updates an existing one
+     * @param node the root node of the tree that will be iterated through
+     * @param statement the statement that will be added to the tree or used to update it
+     * @return terminates the function
+     */
     private Node addOrUpdate(Node node, Statement statement) {
         if (node == null) {
             return new Node(statement);
@@ -50,6 +64,12 @@ class BST {
         return search(root, term);
     }
 
+    /**
+     * Searches for a target term
+     * @param node the root node of the tree that will be traversed. 
+     * @param term the target term
+     * @return terminates the method
+     */
     private Statement search(Node node, String term) {
         if (node == null) {
             return null;

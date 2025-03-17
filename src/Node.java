@@ -1,5 +1,5 @@
 /**
- * Node class for BST.
+ * Node class to be used in BST class
  */
 class Node {
     Statement statement;
