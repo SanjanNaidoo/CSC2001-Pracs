@@ -11,7 +11,6 @@ class BST {
      */
     private Node root;
 
-    
     /**
      * Loads statements from the target file
      * @param filename the name of the target file
@@ -38,12 +37,6 @@ class BST {
         root = addOrUpdate(root, newStatement);
     }
 
-    /**
-     * Adds a new statement to the tree or updates an existing one
-     * @param node the root node of the tree that will be iterated through
-     * @param statement the statement that will be added to the tree or used to update it
-     * @return terminates the function
-     */
     private Node addOrUpdate(Node node, Statement statement) {
         if (node == null) {
             return new Node(statement);
@@ -64,12 +57,6 @@ class BST {
         return search(root, term);
     }
 
-    /**
-     * Searches for a target term
-     * @param node the root node of the tree that will be traversed. 
-     * @param term the target term
-     * @return terminates the method
-     */
     private Statement search(Node node, String term) {
         if (node == null) {
             return null;
@@ -78,5 +65,36 @@ class BST {
             return node.statement;
         }
         return term.compareTo(node.statement.term) < 0 ? search(node.left, term) : search(node.right, term);
+    }
+
+    public void deleteTerm(String term) {
+        root = deleteTerm(root, term);
+    }
+
+    public Node deleteTerm(Node node, String term) {
+        if (node == null) {
+            return null;
+        }
+        if (term.compareTo(node.statement.term) < 0) {
+            node.left = deleteTerm(node.left, term);
+        } else if (term.compareTo(node.statement.term) > 0) {
+            node.right = deleteTerm(node.right, term);
+        } else {
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            }
+            node.statement = findMin(node.right).statement;
+            node.right = deleteTerm(node.right, node.statement.term);
+        }
+        return node;
+    }
+
+    private Node findMin(Node node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
     }
 }

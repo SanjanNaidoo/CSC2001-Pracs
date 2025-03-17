@@ -49,6 +49,7 @@ class KBArray {
             statements[size++] = newStatement;
         } else {
             System.out.println("Knowledge base is full. Cannot add more statements.");
+            return;
         }
     }
 
@@ -68,7 +69,7 @@ class KBArray {
 public class GenericsKbArrayApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        KBArray kb = new KBArray(20000);
+        KBArray kb = new KBArray(100000);
 
         while (true) {
             System.out.println("\nChoose an action from the menu:");
