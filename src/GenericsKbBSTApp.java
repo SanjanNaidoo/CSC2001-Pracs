@@ -67,6 +67,7 @@ public class GenericsKbBSTApp {
                     break;
                 case 4: //terminate program
                     System.out.println("Exiting application.");
+                    scanner.close();
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
