@@ -97,15 +97,4 @@ public class GenericsKbBSTApp {
     }
 }
 
-class Statement {
-    String term;
-    String sentence;
-    double confidence;
-
-    public Statement(String term, String sentence, double confidence) {
-        this.term = term;
-        this.sentence = sentence;
-        this.confidence = confidence;
-    }
-}
 
