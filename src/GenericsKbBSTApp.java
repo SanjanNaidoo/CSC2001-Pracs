@@ -1,32 +1,45 @@
 import java.io.*;
 import java.util.*;
 
+/**
+import java.io.*;
+import java.util.*;
+
+/**
+ * Statement processing application using a binary tree implementation
+ * Users can search for information using various terms, add information about terms, update information about terms
+ */
 public class GenericsKbBSTApp {
+    /**
+     * The main function that runs the application
+     * @param args CMD arguments given to the program
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BST kb = new BST();
 
         while (true) {
+            //Displays the menu in the terminal
             System.out.println("\nChoose an action from the menu:");
             System.out.println("1. Load a knowledge base from a file");
             System.out.println("2. Add a new statement to the knowledge base");
             System.out.println("3. Search for a statement in the knowledge base by term");
-            System.out.println("4. Delete a statement by term");
-            System.out.println("5. Quit");
+            System.out.println("4. Quit");
             System.out.print("Enter your choice: ");
 
             String input = scanner.nextLine();
             int choice;
             try {
                 choice = Integer.parseInt(input);
-                if (choice < 1 || choice > 5) {
+                if (choice < 1 || choice > 4) {
                     throw new NumberFormatException();
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                System.out.println("Invalid input. Please enter a number between 1 and 4.");
                 continue;
             }
 
+            //Execute user's selected action
             switch (choice) {
                 case 1:
                     System.out.print("Enter file name: ");
@@ -74,16 +87,6 @@ public class GenericsKbBSTApp {
                     }
                     break;
                 case 4:
-                    System.out.print("Enter the term to delete: ");
-                    term = scanner.nextLine().trim();
-                    if (term.isEmpty()) {
-                        System.out.println("Delete term cannot be empty.");
-                        break;
-                    }
-                    kb.deleteTerm(term);;
-                    System.out.println("Statement deleted if it existed.");
-                    break;
-                case 5:
                     System.out.println("Exiting application.");
                     scanner.close();
                     return;
@@ -94,4 +97,15 @@ public class GenericsKbBSTApp {
     }
 }
 
+class Statement {
+    String term;
+    String sentence;
+    double confidence;
+
+    public Statement(String term, String sentence, double confidence) {
+        this.term = term;
+        this.sentence = sentence;
+        this.confidence = confidence;
+    }
+}
 
