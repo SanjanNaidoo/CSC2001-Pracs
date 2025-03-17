@@ -4,11 +4,11 @@ import java.util.*;
 /**
  * Array-based Knowledge Base implementation.
  */
-class KnowledgeBaseArray {
+class KBArray {
     private Statement[] statements;
     private int size;
 
-    public KnowledgeBaseArray(int capacity) {
+    public KBArray(int capacity) {
         statements = new Statement[capacity];
         size = 0;
     }
@@ -61,7 +61,7 @@ class KnowledgeBaseArray {
 public class GenericsKbArrayApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        KnowledgeBaseArray kb = new KnowledgeBaseArray(1000);
+        KBArray kb = new KBArray(1000);
 
         while (true) {
             System.out.println("Choose an action from the menu:");
@@ -112,6 +112,7 @@ public class GenericsKbArrayApp {
                     break;
                 case 4:
                     System.out.println("Exiting application.");
+                    scanner.close();
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
